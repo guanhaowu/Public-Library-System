@@ -1,0 +1,7 @@
+C:\Users\guanh\Google Drive\HR-Informatica\Analyse 3\Assignment\PLS\obj\Debug\PLS.csprojResolveAssemblyReference.cache
+C:\Users\guanh\Google Drive\HR-Informatica\Analyse 3\Assignment\PLS\obj\Debug\PLS.csproj.CoreCompileInputs.cache
+C:\Users\guanh\Google Drive\HR-Informatica\Analyse 3\Assignment\PLS\bin\Debug\PLS.exe.config
+C:\Users\guanh\Google Drive\HR-Informatica\Analyse 3\Assignment\PLS\bin\Debug\PLS.exe
+C:\Users\guanh\Google Drive\HR-Informatica\Analyse 3\Assignment\PLS\bin\Debug\PLS.pdb
+C:\Users\guanh\Google Drive\HR-Informatica\Analyse 3\Assignment\PLS\obj\Debug\PLS.exe
+C:\Users\guanh\Google Drive\HR-Informatica\Analyse 3\Assignment\PLS\obj\Debug\PLS.pdb
