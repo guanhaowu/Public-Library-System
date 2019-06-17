@@ -8,15 +8,12 @@ namespace PLS.model
 {
     class Customer : Person
     {
-        private string Username;
+        private int customerNum;
 
-        public Customer(
-            string surName, string lastName, string gender, string nationality, string street,
-            string postcode, string city, string email, string telephoneNum, string username 
-            ) : base(surName, lastName, gender, nationality, street,
-            postcode, city, email, telephoneNum)
+        public Customer( string surName, string lastName, string gender, string nationality, string street, string postcode, string city, string email, string telephoneNum, int customerNum ) : 
+            base(surName, lastName, gender, nationality, street, postcode, city, email, telephoneNum)
         {
-
+            this.customerNum = customerNum;
         }
     }
 }

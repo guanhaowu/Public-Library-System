@@ -17,5 +17,16 @@ namespace PLS
         public string[] Genre;
         public string Edition;
 
+        public Book(string Title, string Author, string Description, int Amount, string PublishYear, string ISBN, string[] Genre, string Edition)
+        {
+            this.Title = Title;
+            this.Author = Author; 
+            this.Description = Description;
+            this.Amount = Amount;
+            this.PublishYear = PublishYear;
+            this.ISBN = ISBN;
+            this.Genre = Genre;
+            this.Edition = Edition;
+        }
     }
 }
