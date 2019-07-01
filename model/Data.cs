@@ -18,9 +18,9 @@ namespace PLS
         {
             var books = new List<Book>();
 
-            using (StreamReader reader = new StreamReader("C:/Users/guanh/Desktop/Github/Public-Library-System/Data/books.json"))
+            using (StreamReader reader = new StreamReader("C:/Users/guanh/Desktop/Github/Public-Library-System/Data/savedbooks.json"))
             {
-                string json = reader.ReadToEnd();
+                var json = reader.ReadToEnd();
                 books = JsonConvert.DeserializeObject<List<Book>>(json);
             }
             return books;
@@ -32,7 +32,7 @@ namespace PLS
             books.Add(book);
 
             var json = JsonConvert.SerializeObject(books);
-            File.WriteAllText(@"Data/savedbooks.json", json);
+            File.WriteAllText(@"C:/Users/guanh/Desktop/Github/Public-Library-System/Data/savedbooks.json", json);
         }
         
 /*

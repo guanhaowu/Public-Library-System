@@ -42,17 +42,20 @@ namespace PLS
 
                 Console.Write("Command: ");
                 string inputValue = Console.ReadLine();
-                if(inputValue == "getData")
+                switch (inputValue)
                 {
-                    
-                    data.GetData();
+                    case "getData":
+                        data.GetData();
+                        break;
+                    case "saveBook":
+                    {
+                        //string Title, string Author, string Description, int Amount, string PublishYear, string ISBN, string[] Genre, string Edition
+                        var book = new Book("Berend Botje", "John Doe", "Leuk boek", 1, "1990", "12345", new string[] { "Horror"}, "3de");
+                        data.SaveBook(book);
+                        break;
+                    }
                 }
-                if(inputValue == "saveBook")
-                {
-                    //string Title, string Author, string Description, int Amount, string PublishYear, string ISBN, string[] Genre, string Edition
-                    var book = new Book("Berend Botje", "John Doe", "Leuk boek", 1, "1990", "12345", new string[] { "Horror"}, "3de");
-                    data.SaveBook(book);
-                }
+
                 Console.WriteLine(inputValue);
                 Functions.actions(inputValue);
             }
