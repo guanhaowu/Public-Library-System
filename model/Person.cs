@@ -18,7 +18,6 @@ namespace PLS
         private string ZipCode;
         private string City;
         private string EmailAddress;
-        private string Username;
         private string TelephoneNumber;
 
         public Person(string surName, string lastName, string gender, string nationality, string street, string postcode, string city, string email, string telephoneNum)
@@ -27,7 +26,12 @@ namespace PLS
             this.SurName = surName;
             this.LastName = lastName;
             this.Gender = gender;
-
+            this.Nameset = nationality;
+            this.StreetAddress = street;
+            this.ZipCode = postcode;
+            this.City = city;
+            this.EmailAddress = email;
+            this.TelephoneNumber = telephoneNum;
         }
 
         public string getSurName()
@@ -40,7 +44,12 @@ namespace PLS
             return this.LastName;
         }
 
-        public string getDoB()
+        public string getName()
+        {
+            return this.SurName + this.LastName;
+        }
+
+        public string getGender()
         {
             return this.Gender;
         }

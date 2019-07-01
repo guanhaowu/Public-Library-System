@@ -10,10 +10,21 @@ namespace PLS.model
     {
         private int customerNum;
 
-        public Customer( string surName, string lastName, string gender, string nationality, string street, string postcode, string city, string email, string telephoneNum, int customerNum ) : 
+        public Customer( string surName, string lastName, string gender, string nationality, string street, string postcode, string city, string email, string telephoneNum) : 
             base(surName, lastName, gender, nationality, street, postcode, city, email, telephoneNum)
         {
-            this.customerNum = customerNum;
+            this.customerNum = customerNum+1;
+        }
+
+        // Method
+        public int getCustomerNum()
+        {
+            return this.customerNum;
+        }
+
+        public static string[] getAllCustomer() {
+            string[] AllCustomer = { };
+            return AllCustomer;
         }
     }
 }
