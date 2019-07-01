@@ -12,7 +12,7 @@ namespace PLS
         // Default folder location
         static readonly string rootFolder = @"C:\temp\Data\";
         static readonly string AuthorsFile = @"C:\temp\Data\Authors.txt";
-
+/*
         public void getAuthors() {
             string[] AuthLines = File.ReadAllLines(AuthorsFile);
             foreach (string line in AuthLines)
@@ -31,6 +31,7 @@ namespace PLS
                 Console.WriteLine(line);
             }
         }
+*/
 
 
 

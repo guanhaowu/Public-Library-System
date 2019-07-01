@@ -13,7 +13,7 @@ namespace PLS.model
         public Customer( string surName, string lastName, string gender, string nationality, string street, string postcode, string city, string email, string telephoneNum) : 
             base(surName, lastName, gender, nationality, street, postcode, city, email, telephoneNum)
         {
-            this.customerNum = customerNum+1;
+            
         }
 
         // Method
@@ -25,6 +25,10 @@ namespace PLS.model
         public static string[] getAllCustomer() {
             string[] AllCustomer = { };
             return AllCustomer;
+        }
+        
+        public void AddCustomer() {
+            this.customerNum = customerNum + 1;
         }
     }
 }

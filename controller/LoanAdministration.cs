@@ -9,7 +9,6 @@ namespace PLS
 {
     class LoanAdministration
     {
-        Customer customer;
         public LoanAdministration() { }
 
         // Methods:
@@ -20,9 +19,39 @@ namespace PLS
             result = args;
             return result;
         }
-        public string[] GetCustomer<a>(a args) {
-            return customer.getName();
+
+        public string GetCustomer(string[] args)
+        {
+            return args[0].ToString(); //unfinished
         }
+
+        public void AddCustomer()
+        {
+            Console.WriteLine("Surname: ");
+            string surName = Console.Read().ToString();
+            Console.WriteLine("Last name: ");
+            string lastName = Console.Read().ToString();
+            Console.WriteLine("Gender: ");
+            string gender = Console.Read().ToString();
+            Console.WriteLine("Nationality: ");
+            string nationality = Console.Read().ToString();
+            Console.WriteLine("Street address: ");
+            string street = Console.Read().ToString();
+            Console.WriteLine("Postcode: ");
+            string postcode = Console.Read().ToString();
+            Console.WriteLine("City: ");
+            string city = Console.Read().ToString();
+            Console.WriteLine("Email: ");
+            string email = Console.Read().ToString();
+            Console.WriteLine("Phone number: ");
+            string telephoneNum = Console.Read().ToString();
+
+            Customer new_customer = new Customer(surName, lastName, gender, nationality, street, postcode, city, email, telephoneNum);
+            new_customer.AddCustomer();
+        }
+}
+
+
 
 
 
