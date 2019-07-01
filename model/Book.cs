@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,9 @@ namespace PLS
     class Book
     {
         public string Title;
+        [JsonProperty(PropertyName = "author")]
         public string Author;
+
         public string Description;
         public int Amount;
         public string PublishYear;

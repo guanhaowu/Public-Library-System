@@ -24,8 +24,7 @@ namespace PLS
     {
         public static bool status = true;
         static void Main(string[] args)
-        {
-            
+        {   
             Console.Title = "Public Library System";
             Console.WriteLine("Welcome to the Public Library System");
             Console.WriteLine("Please type 'help' for more information.");
@@ -39,8 +38,21 @@ namespace PLS
 
             while (status == true)
             {
+                Data data = new Data();
+
                 Console.Write("Command: ");
                 string inputValue = Console.ReadLine();
+                if(inputValue == "getData")
+                {
+                    
+                    data.GetData();
+                }
+                if(inputValue == "saveBook")
+                {
+                    //string Title, string Author, string Description, int Amount, string PublishYear, string ISBN, string[] Genre, string Edition
+                    var book = new Book("Berend Botje", "John Doe", "Leuk boek", 1, "1990", "12345", new string[] { "Horror"}, "3de");
+                    data.SaveBook(book);
+                }
                 Console.WriteLine(inputValue);
                 Functions.actions(inputValue);
             }

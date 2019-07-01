@@ -49,11 +49,5 @@ namespace PLS
             Customer new_customer = new Customer(surName, lastName, gender, nationality, street, postcode, city, email, telephoneNum);
             new_customer.AddCustomer();
         }
-}
-
-
-
-
-
     }
 }
