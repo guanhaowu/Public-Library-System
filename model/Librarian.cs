@@ -10,8 +10,8 @@ namespace PLS.model
     {
         private static int Counter;
         private int LibrarianId { get; set; } = Counter;
-        public Librarian(int number, string surName, string lastName, string gender, string nationality, string street, string postcode, string city, string email, string telephoneNum) :
-            base(number, surName, lastName, gender, nationality, street, postcode, city, email, telephoneNum)
+        public Librarian(int number, string gender, string nationality, string lastName, string surName, string street, string postcode, string city, string email, string telephoneNum) :
+            base(number, gender, nationality, lastName, surName, street, postcode, city, email, telephoneNum)
         {
             this.LibrarianId = ++Counter;
         }

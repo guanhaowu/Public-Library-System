@@ -50,7 +50,7 @@ namespace PLS
             string telephoneNum = Console.Read().ToString();
 
             int number = data.GetCustomerList().Count;
-            Customer new_customer = new Customer(number,surName, lastName, gender, nationality, street, postcode, city, email, username, telephoneNum);
+            Customer new_customer = new Customer(number,gender, nationality, lastName, surName, street, postcode, city, email, username, telephoneNum);
             new_customer.AddCustomer();
         }
     }

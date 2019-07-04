@@ -20,7 +20,7 @@ namespace PLS
         private string TelephoneNumber { get; set; }
         //Fields: Number,Gender,NameSet,GivenName,Surname,StreetAddress,ZipCode,City,EmailAddress,Username,TelephoneNumber
 
-        public Person(int number, string surName, string lastName, string gender, string nationality, string street, string postcode, string city, string email, string telephoneNum)
+        public Person(int number, string gender, string nationality, string lastName, string surName, string street, string postcode, string city, string email, string telephoneNum)
         {
             this.Number = number;
             this.SurName = surName;

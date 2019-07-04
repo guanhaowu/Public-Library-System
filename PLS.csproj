@@ -65,6 +65,7 @@
     <None Include="App.config" />
     <None Include="Data\books.json" />
     <None Include="Data\persons.csv" />
+    <None Include="Data\persons.json" />
     <None Include="Data\savedbooks.json" />
     <None Include="Data\settings.json" />
     <None Include="packages.config" />

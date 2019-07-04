@@ -20,7 +20,7 @@ namespace PLS
         private static readonly string InitialBookFile = projectDirectory + "\\Data\\books.json";
         private static readonly string NewBookFile = projectDirectory + "\\Data\\savedbooks.json";
         private static readonly string InitialPersonFile = projectDirectory + "\\Data\\persons.csv";
-        private static readonly string NewPersonFile = projectDirectory + "\\Data\\persons.csv";
+        private static readonly string NewPersonFile = projectDirectory + "\\Data\\persons.json";
 
         public List<Settings> GetSettings()
         {
@@ -95,7 +95,18 @@ namespace PLS
 
             for (int i = 1; i < contentList.Count; i++)
             {
-                CustomerList.Add(new Customer(Int32.Parse(contentList[i][0]), contentList[i][3], contentList[i][4], contentList[i][1], contentList[i][2], contentList[i][5], contentList[i][6], contentList[i][7], contentList[i][8], contentList[i][9],contentList[i][10]));
+                CustomerList.Add(new Customer(
+                    Int32.Parse(contentList[i][0]), 
+                    contentList[i][1],
+                    contentList[i][2],
+                    contentList[i][3],
+                    contentList[i][4],
+                    contentList[i][5],
+                    contentList[i][6],
+                    contentList[i][7],
+                    contentList[i][8],
+                    contentList[i][9],
+                    contentList[i][10]));
             }
             return CustomerList;
         }
@@ -104,9 +115,8 @@ namespace PLS
             var customers = GetCustomerList();
             customers.Add(customer);
 
-            var json = JsonConvert.SerializeObject(customer);
-            File.WriteAllText(NewBookFile, json);
-
+            var json = JsonConvert.SerializeObject(customers);// result = {},{},{},{},....   instead filled objects.
+            File.WriteAllText(NewPersonFile, json);//saves as [{},{},{},{},...] 
             //ApplySettings(1);
         }
 

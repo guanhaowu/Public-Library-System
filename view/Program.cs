@@ -58,10 +58,10 @@ namespace PLS
                         break;
                     }
 
-                    case "addCustomer":
+                    case "saveCustomer":
                     {
                         int number = data.GetCustomerList().Count+1;
-                        var _customers = new Customer(number,"Fred", "Ali", "male", "Netherlands", "goudeweg 124", "3042BD", "Rotterdam", "test@test.nl", "Test123" , "06-12345678");
+                        var _customers = new Customer(number,"Man", "Chinese", "Wu", "Guan", "goudeweg 124", "3042BD", "Rotterdam", "test@test.nl", "Test123" , "06-12345678");
                         data.SaveCustomer(_customers);
                         break;
                     }

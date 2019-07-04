@@ -11,8 +11,8 @@ namespace PLS.model
         private static int counter;
         private int customerNum { get; set; } = counter;
 
-        public Customer(int number, string surName, string lastName, string gender, string nationality, string street, string postcode, string city, string email, string userName, string telephoneNum) : 
-            base(number,surName, lastName, gender, nationality, street, postcode, city, email, telephoneNum)
+        public Customer(int number, string gender, string nationality, string lastName, string surName, string street, string postcode, string city, string email, string username, string telephoneNum): 
+            base(number,gender, nationality, lastName, surName, street, postcode, city, email, telephoneNum)
         {
 
             AddCustomer();
