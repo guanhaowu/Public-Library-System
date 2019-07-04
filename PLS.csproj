@@ -46,7 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controller\BookItem.cs" />
+    <Compile Include="model\Settings.cs" />
+    <Compile Include="model\BookItem.cs" />
     <Compile Include="controller\LoanItem.cs" />
     <Compile Include="model\Author.cs" />
     <Compile Include="model\Book.cs" />
@@ -65,6 +66,7 @@
     <None Include="Data\books.json" />
     <None Include="Data\persons.csv" />
     <None Include="Data\savedbooks.json" />
+    <None Include="Data\settings.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PLS.controller;
+using PLS.model;
 
 namespace PLS
 {
@@ -28,14 +29,11 @@ namespace PLS
             Console.Title = "Public Library System";
             Console.WriteLine("Welcome to the Public Library System");
             Console.WriteLine("Please type 'help' for more information.");
-
             Run();
-
         }
     
         public static void Run()
         {
-
             while (status == true)
             {
                 Data data = new Data();
@@ -45,15 +43,29 @@ namespace PLS
                 switch (inputValue)
                 {
                     case "getData":
-                        data.GetData();
+                        data.GetBookData();
                         break;
                     case "saveBook":
                     {
-                        //string Title, string Author, string Description, int Amount, string PublishYear, string ISBN, string[] Genre, string Edition
-                        var book = new Book("Berend Botje", "John Doe", "Leuk boek", 1, "1990", "12345", new string[] { "Horror"}, "3de");
+                        var book = new Book("ATRS Botje", "Netherlands", "LeukBoek/boek1.jpg", "NL", "url", 129,
+                            "Title1", 2019);
                         data.SaveBook(book);
                         break;
                     }
+                    case "getCustomer":
+                    {
+                        data.GetCustomerList();
+                        break;
+                    }
+
+                    case "addCustomer":
+                    {
+                        int number = data.GetCustomerList().Count+1;
+                        var _customers = new Customer(number,"Fred", "Ali", "male", "Netherlands", "goudeweg 124", "3042BD", "Rotterdam", "test@test.nl", "Test123" , "06-12345678");
+                        data.SaveCustomer(_customers);
+                        break;
+                    }
+                        
                 }
 
                 Console.WriteLine(inputValue);

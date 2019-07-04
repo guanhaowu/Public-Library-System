@@ -8,27 +8,20 @@ namespace PLS.model
 {
     class Customer : Person
     {
-        private int customerNum;
+        private static int counter;
+        private int customerNum { get; set; } = counter;
 
-        public Customer( string surName, string lastName, string gender, string nationality, string street, string postcode, string city, string email, string telephoneNum) : 
-            base(surName, lastName, gender, nationality, street, postcode, city, email, telephoneNum)
+        public Customer(int number, string surName, string lastName, string gender, string nationality, string street, string postcode, string city, string email, string userName, string telephoneNum) : 
+            base(number,surName, lastName, gender, nationality, street, postcode, city, email, telephoneNum)
         {
-            
+
+            AddCustomer();
         }
 
         // Method
-        public int getCustomerNum()
-        {
-            return this.customerNum;
-        }
 
-        public static string[] getAllCustomer() {
-            string[] AllCustomer = { };
-            return AllCustomer;
-        }
-        
         public void AddCustomer() {
-            this.customerNum = customerNum + 1;
+            this.customerNum = counter + 1;
         }
     }
 }

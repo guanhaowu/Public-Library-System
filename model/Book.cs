@@ -9,27 +9,33 @@ namespace PLS
 {
     class Book
     {
-        public string Title;
+        [JsonProperty(PropertyName = "title")]
+        public string Title { get; set; }
         [JsonProperty(PropertyName = "author")]
-        public string Author;
+        public string Author { get; set; }
+        [JsonProperty(PropertyName = "country")]
+        public string Country { get; set; }
+        [JsonProperty(PropertyName = "pages")]
+        public int Pages { get; set; }
+        [JsonProperty(PropertyName = "year")]
+        public int Year { get; set; }
+        [JsonProperty(PropertyName = "imageLink")]
+        public string ImageLink { get; set; }
+        [JsonProperty(PropertyName = "link")]
+        public string Link { get; set; }
+        [JsonProperty(PropertyName = "language")]
+        public string Language { get; set; }
 
-        public string Description;
-        public int Amount;
-        public string PublishYear;
-        public string ISBN;
-        public string[] Genre;
-        public string Edition;
-
-        public Book(string Title, string Author, string Description, int Amount, string PublishYear, string ISBN, string[] Genre, string Edition)
+        public Book(string author, string country, string imageLink, string language, string link, int pages, string title, int year)
         {
-            this.Title = Title;
-            this.Author = Author; 
-            this.Description = Description;
-            this.Amount = Amount;
-            this.PublishYear = PublishYear;
-            this.ISBN = ISBN;
-            this.Genre = Genre;
-            this.Edition = Edition;
+            this.Author = author; 
+            this.Country = country;
+            this.ImageLink = imageLink;
+            this.Language = language;
+            this.Link = link;
+            this.Pages = pages;
+            this.Title = title;
+            this.Year = year;
         }
     }
 }

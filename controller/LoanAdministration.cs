@@ -9,6 +9,7 @@ namespace PLS
 {
     class LoanAdministration
     {
+        Data data = new Data();
         public LoanAdministration() { }
 
         // Methods:
@@ -43,10 +44,13 @@ namespace PLS
             string city = Console.Read().ToString();
             Console.WriteLine("Email: ");
             string email = Console.Read().ToString();
+            Console.WriteLine("Username: ");
+            string username = Console.Read().ToString();
             Console.WriteLine("Phone number: ");
             string telephoneNum = Console.Read().ToString();
 
-            Customer new_customer = new Customer(surName, lastName, gender, nationality, street, postcode, city, email, telephoneNum);
+            int number = data.GetCustomerList().Count;
+            Customer new_customer = new Customer(number,surName, lastName, gender, nationality, street, postcode, city, email, username, telephoneNum);
             new_customer.AddCustomer();
         }
     }

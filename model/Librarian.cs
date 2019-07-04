@@ -8,11 +8,12 @@ namespace PLS.model
 {
     class Librarian : Person
     {
-        private int LibrarianId;
-        public Librarian(string surName, string lastName, string gender, string nationality, string street, string postcode, string city, string email, string telephoneNum, int LibrarianId) :
-            base(surName, lastName, gender, nationality, street, postcode, city, email, telephoneNum)
+        private static int Counter;
+        private int LibrarianId { get; set; } = Counter;
+        public Librarian(int number, string surName, string lastName, string gender, string nationality, string street, string postcode, string city, string email, string telephoneNum) :
+            base(number, surName, lastName, gender, nationality, street, postcode, city, email, telephoneNum)
         {
-
+            this.LibrarianId = ++Counter;
         }
     }
 }

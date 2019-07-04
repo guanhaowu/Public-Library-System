@@ -8,21 +8,21 @@ namespace PLS
 {
     class Person
     {
-        private static int PersonCounter;
-        private int ID = PersonCounter;
-        private string SurName;
-        private string LastName;
-        private string Gender;
-        private string Nameset; //Nationality
-        private string StreetAddress;
-        private string ZipCode;
-        private string City;
-        private string EmailAddress;
-        private string TelephoneNumber;
+        private int Number { get; set; }
+        private string SurName { get; set; }
+        private string LastName { get; set; }
+        private string Gender { get; set; }
+        private string Nameset { get; set; } //Nationality
+        private string StreetAddress { get; set; }
+        private string ZipCode { get; set; }
+        private string City { get; set; }
+        private string EmailAddress { get; set; }
+        private string TelephoneNumber { get; set; }
+        //Fields: Number,Gender,NameSet,GivenName,Surname,StreetAddress,ZipCode,City,EmailAddress,Username,TelephoneNumber
 
-        public Person(string surName, string lastName, string gender, string nationality, string street, string postcode, string city, string email, string telephoneNum)
+        public Person(int number, string surName, string lastName, string gender, string nationality, string street, string postcode, string city, string email, string telephoneNum)
         {
-            this.ID = ++PersonCounter;
+            this.Number = number;
             this.SurName = surName;
             this.LastName = lastName;
             this.Gender = gender;
@@ -33,31 +33,5 @@ namespace PLS
             this.EmailAddress = email;
             this.TelephoneNumber = telephoneNum;
         }
-
-        public string getSurName()
-        {
-            return this.SurName;
-        }
-
-        public string getLastName()
-        {
-            return this.LastName;
-        }
-
-        public string getName()
-        {
-            return this.SurName + this.LastName;
-        }
-
-        public string getGender()
-        {
-            return this.Gender;
-        }
-
-        public int getID()
-        {
-            return this.ID;
-        }
-
     }
 }
