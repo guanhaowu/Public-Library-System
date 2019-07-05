@@ -2,8 +2,11 @@
 
 namespace PLS
 {
-    /*By Guan Hao Wu
-     *Student nummer: 0976154
+    /* By Guan Hao Wu
+     * Student number: 0976154
+     * 
+     * Python version by Albert Hoefnagel
+     * Student number: 0961988
      */
     class Program
     {
