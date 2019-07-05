@@ -1008,5 +1008,15 @@
     "imageLink": "LeukBoek/boek1.jpg",
     "link": "url",
     "language": "NL"
+  },
+  {
+    "title": "LocalHost",
+    "author": "Tim",
+    "country": "Netherlands",
+    "pages": 100,
+    "year": 2019,
+    "imageLink": "desktop/test.jpg",
+    "link": "127.0.0.1",
+    "language": "Dutch"
   }
 ]

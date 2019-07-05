@@ -2,7 +2,7 @@
 
 namespace PLS.model
 {
-    class Settings
+    public class Settings
     {
         [JsonProperty(PropertyName = "FirstRun_Book")]
         public bool FirstRun_Book { get; set; } = true;

@@ -1,17 +1,61 @@
-﻿using System;
+﻿using PLS.model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace PLS
 {
     class Catalog
     {
+        Data data = new Data();
+        public List<BookItem> Bookitem = new List<BookItem>();
 
-        public string[] SearchBook(string input){
-            string[] result = { "0", "1" };
-            return result;
+        List<BookItem> searchResult = new List<BookItem>();
+
+        public Catalog() { this.Bookitem = data.UploadBooks(); }
+
+        public List<BookItem> GetAllBooks()
+        {
+            return Bookitem;
+        }
+
+        //search by title
+        public List<BookItem> SearchBooksByTitle(string title)
+        {
+            searchResult.Clear();
+            foreach (var book in Bookitem)
+            {
+                if (book.Title == title)
+                {
+                    searchResult.Add(book);
+                }
+            }
+            return searchResult;
+        }
+
+        public List<BookItem> SearchBooksByAuthor(string author)
+        {
+            searchResult.Clear();
+            foreach (var book in Bookitem)
+            {
+                if (book.Author == author)
+                {
+                    searchResult.Add(book);
+                }
+            }
+            return searchResult;
+        }
+
+        public List<BookItem> SearchBooksByAuthorAndTitle(string title, string author)
+        {
+            searchResult.Clear();
+            foreach (var book in Bookitem)
+            {
+                if (book.Author == author && book.Title == title)
+                {
+                   searchResult.Add(book);
+                }
+            }
+            return searchResult;
         }
     }
 }

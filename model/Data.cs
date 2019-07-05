@@ -3,15 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using PLS.controller;
 using PLS.model;
 
 namespace PLS
 {
-    class Data
+    public class Data
     {
         // Default folder location
         private static string workingDirectory = Environment.CurrentDirectory;
@@ -23,20 +19,25 @@ namespace PLS
         public static readonly string NewPersonFile = projectDirectory + "\\Data\\persons.json";
 
         //backup locations
-        public static readonly string backup_NewBookFile = projectDirectory + "\\Backup\\savedbooks.json";
-        public static readonly string backup_NewPersonFile = projectDirectory + "\\Backup\\persons.json";
+        public static readonly string backup_NewBookFile = projectDirectory + "\\Data\\Backup\\savedbooks.json";
+        public static readonly string backup_NewPersonFile = projectDirectory + "\\Data\\Backup\\persons.json";
 
         [JsonProperty]
         public List<Customer> CustomerList = new List<Customer>();
 
+
         public List<Settings> GetSettings()
         {
             var settings = new List<Settings>();
-            using (StreamReader reader = new StreamReader(SettingsFile))
+            try
             {
-                var json = reader.ReadToEnd();
-                settings = JsonConvert.DeserializeObject<List<Settings>>(json);
+                using (StreamReader reader = new StreamReader(SettingsFile))
+                {
+                    var json = reader.ReadToEnd();
+                    settings = JsonConvert.DeserializeObject<List<Settings>>(json);
+                }
             }
+            catch { Console.WriteLine("Failed to load Settings file..."); }
             return settings;
         }
 
@@ -56,18 +57,22 @@ namespace PLS
             File.WriteAllText(SettingsFile, json);
         }
 
-        public List<Book> UploadBooks()
+        public List<BookItem> UploadBooks()
         {
-            var books = new List<Book>();
+            var books = new List<BookItem>();
 
             string BookFile;
             var setting = GetSettings();
             BookFile = setting[0].FirstRun_Book ? InitialBookFile : NewBookFile;
-            using (StreamReader reader = new StreamReader(BookFile))
+            try
             {
-                var json = reader.ReadToEnd();
-                books = JsonConvert.DeserializeObject<List<Book>>(json);
+                using (StreamReader reader = new StreamReader(BookFile))
+                {
+                    var json = reader.ReadToEnd();
+                    books = JsonConvert.DeserializeObject<List<BookItem>>(json);
+                }
             }
+            catch { Console.WriteLine("Failed to load books file..."); }
             return books;
         }
 
