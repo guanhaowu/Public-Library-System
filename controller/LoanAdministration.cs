@@ -49,9 +49,8 @@ namespace PLS
             Console.WriteLine("Phone number: ");
             string telephoneNum = Console.Read().ToString();
 
-            int number = data.GetCustomerList().Count;
+            int number = data.UploadCustomer().Count;
             Customer new_customer = new Customer(number,gender, nationality, lastName, surName, street, postcode, city, email, username, telephoneNum);
-            new_customer.AddCustomer();
         }
     }
 }

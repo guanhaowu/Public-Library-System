@@ -54,13 +54,17 @@ namespace PLS
                     }
                     case "getCustomer":
                     {
-                        data.GetCustomerList();
+                        int numb = data.UploadCustomer().Count;
+                        for(int i = 0; i < numb; i++)
+                        {
+                            Console.WriteLine(data.UploadCustomer()[i].GetCustomer());    
+                        }
                         break;
                     }
 
                     case "saveCustomer":
                     {
-                        int number = data.GetCustomerList().Count+1;
+                        int number = data.UploadCustomer().Count+1;
                         var _customers = new Customer(number,"Man", "Chinese", "Wu", "Guan", "goudeweg 124", "3042BD", "Rotterdam", "test@test.nl", "Test123" , "06-12345678");
                         data.SaveCustomer(_customers);
                         break;
