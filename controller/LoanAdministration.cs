@@ -10,6 +10,8 @@ namespace PLS
     class LoanAdministration
     {
         Data data = new Data();
+        public List<Customer> Customers = new List<Customer>();
+
         public LoanAdministration() { }
 
         // Methods:
@@ -51,6 +53,11 @@ namespace PLS
 
             int number = data.UploadCustomer().Count;
             Customer new_customer = new Customer(number,gender, nationality, lastName, surName, street, postcode, city, email, username, telephoneNum);
+        }
+
+        public Customer GetCustomer(int i)
+        {
+            return Customers[i];
         }
     }
 }

@@ -54,11 +54,12 @@ namespace PLS
                     }
                     case "getCustomer":
                     {
-                        int numb = data.UploadCustomer().Count;
-                        for(int i = 0; i < numb; i++)
-                        {
-                            Console.WriteLine(data.UploadCustomer()[i].GetCustomer());    
-                        }
+                    //    int numb = data.UploadCustomer().Count;
+                    //    for(int i = 0; i < numb; i++)
+                    //    {
+                    //        Console.WriteLine(data.UploadCustomer()[i].GetCustomer());    
+                    //    }
+                        data.UploadCustomer();
                         break;
                     }
 

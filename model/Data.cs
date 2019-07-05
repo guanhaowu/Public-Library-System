@@ -22,6 +22,9 @@ namespace PLS
         private static readonly string InitialPersonFile = projectDirectory + "\\Data\\persons.csv";
         private static readonly string NewPersonFile = projectDirectory + "\\Data\\persons.json";
 
+        [JsonProperty]
+        public List<Customer> CustomerList = new List<Customer>();
+
         public List<Settings> GetSettings()
         {
             var settings = new List<Settings>();
@@ -77,24 +80,38 @@ namespace PLS
 
         public List<Customer> UploadCustomer()
         {
-            var CustomerList = new List<Customer>();
-            var FileLocation = GetSettings()[0].FirstRun_PersonList ? InitialPersonFile : NewPersonFile;
-            var lines = File.ReadAllLines(FileLocation);
-            foreach (var line in lines.Skip(1))
+            if (GetSettings()[0].FirstRun_PersonList)
             {
-                var values = line.Split(',');
-                CustomerList.Add(new Customer(
-                    int.Parse(values[0]),
-                    values[1].Replace("\"", ""),
-                    values[2].Replace("\"", ""),
-                    values[3].Replace("\"", ""),
-                    values[4].Replace("\"", ""),
-                    values[5].Replace("\"", ""),
-                    values[6].Replace("\"", ""),
-                    values[7].Replace("\"", ""),
-                    values[8].Replace("\"", ""),
-                    values[9].Replace("\"", ""),
-                    values[10].Replace("\"", "")));
+                var lines = File.ReadAllLines(InitialPersonFile);
+                foreach (var line in lines.Skip(1))
+                {
+                    var values = line.Split(',');
+                    CustomerList.Add(new Customer(
+                        int.Parse(values[0]),
+                        values[1].Replace("\"", ""),
+                        values[2].Replace("\"", ""),
+                        values[3].Replace("\"", ""),
+                        values[4].Replace("\"", ""),
+                        values[5].Replace("\"", ""),
+                        values[6].Replace("\"", ""),
+                        values[7].Replace("\"", ""),
+                        values[8].Replace("\"", ""),
+                        values[9].Replace("\"", ""),
+                        values[10].Replace("\"", "")));
+                }
+            }
+            else
+            {
+                var fileContents = new List<string[]>();
+                using (StreamReader reader = new StreamReader(NewPersonFile))
+                {
+                    var lines = reader.ReadToEnd();
+                    CustomerList = JsonConvert.DeserializeObject<List<Customer>>(lines);
+                }
+            }
+            foreach (var Customer in CustomerList)
+            {
+                Console.WriteLine(Customer.GetCustomer());
             }
             return CustomerList;
         }
@@ -103,14 +120,13 @@ namespace PLS
         {
             var customers = UploadCustomer();
             customers.Add(customer);
-            foreach (var x in customers)
+            var jsonSerializer = new JsonSerializer();
+            using (var writer = new StreamWriter(NewPersonFile))
+            using (var jsonwriter = new JsonTextWriter(writer))
             {
-                Console.WriteLine(x.GetCustomer());
+                jsonSerializer.Serialize(jsonwriter, customers);
             }
-
-            var json = JsonConvert.SerializeObject(customers);// result = {},{},{},{},....   instead filled objects.
-            File.WriteAllText(NewPersonFile, json);//saves as [{},{},{},{},...] 
-            //ApplySettings(1);
+            ApplySettings(1);
         }
 
     }
