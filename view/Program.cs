@@ -36,6 +36,7 @@ namespace PLS
         {
             while (status == true)
             {
+                LoanAdministration admin = new LoanAdministration();
                 Data data = new Data();
 
                 Console.Write("Command: ");
@@ -43,31 +44,28 @@ namespace PLS
                 switch (inputValue)
                 {
                     case "getData":
-                        data.GetBookData();
+                        data.UploadBooks();
                         break;
                     case "saveBook":
                     {
                         var book = new Book("ATRS Botje", "Netherlands", "LeukBoek/boek1.jpg", "NL", "url", 129,
                             "Title1", 2019);
-                        data.SaveBook(book);
+                        admin.addBook(book);
                         break;
                     }
-                    case "getCustomer":
+                    case "getAllCustomer":
                     {
-                    //    int numb = data.UploadCustomer().Count;
-                    //    for(int i = 0; i < numb; i++)
-                    //    {
-                    //        Console.WriteLine(data.UploadCustomer()[i].GetCustomer());    
-                    //    }
                         data.UploadCustomer();
                         break;
                     }
-
-                    case "saveCustomer":
+                    case "getCustomer":
+                        Console.WriteLine("Which user id would you like to search?");
+                        int i = int.Parse(Console.ReadLine());
+                        admin.GetCustomer(i);
+                        break;
+                    case "addCustomer":
                     {
-                        int number = data.UploadCustomer().Count+1;
-                        var _customers = new Customer(number,"Man", "Chinese", "Wu", "Guan", "goudeweg 124", "3042BD", "Rotterdam", "test@test.nl", "Test123" , "06-12345678");
-                        data.SaveCustomer(_customers);
+                        admin.AddCustomer();
                         break;
                     }
                         

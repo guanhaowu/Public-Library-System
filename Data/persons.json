@@ -271,5 +271,18 @@
     "EmailAddress": "test@test.nl",
     "Username": "Test123",
     "TelephoneNumber": "06-12345678"
+  },
+  {
+    "Number": 22,
+    "Gender": "man",
+    "Nameset": "chinese",
+    "LastName": "wu",
+    "SurName": "guanhao",
+    "StreetAddress": "test case123",
+    "ZipCode": "1243 bd",
+    "City": "rotterdam",
+    "EmailAddress": "test@test.com",
+    "Username": "guan12345",
+    "TelephoneNumber": "06-12345679"
   }
 ]
