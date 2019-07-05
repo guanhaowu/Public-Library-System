@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="model\Settings.cs" />
     <Compile Include="model\BookItem.cs" />
-    <Compile Include="controller\LoanItem.cs" />
+    <Compile Include="model\LoanItem.cs" />
     <Compile Include="model\Author.cs" />
     <Compile Include="model\Book.cs" />
     <Compile Include="model\Catalog.cs" />
@@ -63,7 +63,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Data\backup\persons.json" />
+    <None Include="Data\backup\savedbooks.json" />
     <None Include="Data\books.json" />
+    <None Include="Data\borrowList.json" />
     <None Include="Data\persons.csv" />
     <None Include="Data\persons.json" />
     <None Include="Data\savedbooks.json" />

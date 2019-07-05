@@ -38,7 +38,10 @@ namespace PLS
                     }
                 case "getAllCustomer":
                     {
-                        admin.GetAllCustomer();
+                        foreach ( var x in admin.GetAllCustomer())
+                        {
+                            Console.WriteLine(x.GetCustomer());
+                        }
                         break;
                     }
                 case "getCustomer":
@@ -81,9 +84,31 @@ namespace PLS
                         admin.SearchBookByAuthAndTitle(author, title);
                         break;
                     }
+                case "allLoanedBooks":
+                    {
+                        //admin.GetAllBooksOnLoan(admin.GetAllBook(), admin.GetAllCustomer());
+                        Console.WriteLine("Not fully functional yet...");
+                        break;
+                    }
+                case "lendBook":
+                    {
+                        admin.GetAllBooks();
+                        Console.WriteLine("Enter the ID of the book listed above that you want to loan to a customer:");
+                        int bookID = int.Parse(Console.ReadLine());
+                        admin.GetAllCustomer();
+                        Console.WriteLine("Enter the number of the customer listed above that you want to loan a book to:");
+                        int CustomerID = int.Parse(Console.ReadLine());
+                        admin.lendBook(bookID, CustomerID);
+                        break;
+                    }
                 case "backup":
                     {
                         admin.Backup();
+                        break;
+                    }
+                case "restore":
+                    {
+                        admin.restore();
                         break;
                     }
             }
@@ -99,6 +124,8 @@ namespace PLS
             Console.WriteLine("searchAuthor: Search book by Author name.");
             Console.WriteLine("searchTitle: Search book by book title.");
             Console.WriteLine("searchBook: Search book by Author name and book Title.");
+            Console.WriteLine("lendBook: Lend a book to a customer.");
+            Console.WriteLine("allLoanedBooks: Show list of borrowed books by which users.");
             Console.WriteLine("backup: Backup all JSON Files");
             Console.WriteLine("quit: Stop the program from running and exit the console.");
         }

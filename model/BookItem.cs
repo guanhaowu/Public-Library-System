@@ -4,7 +4,6 @@
     {
         public int Id { get; set; }
         public static int Count = 0;
-        private int Amount { get; set; }
         public BookItem(string author, string country, string imageLink, string language, string link, int pages, string title, int year) : base(author, country, imageLink, language, link, pages, title, year)
         {
             this.Id = Count++;

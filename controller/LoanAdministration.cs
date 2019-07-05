@@ -13,14 +13,13 @@ namespace PLS
 
         public List<Customer> customers = new List<Customer>();
         public List<BookItem> books = new List<BookItem>();
-
-        [JsonProperty]
-        private Dictionary<int, int> LoanedBooks = new Dictionary<int, int>();
+        private Dictionary<int,int> LoanedBooks = new Dictionary<int, int>();
 
         public LoanAdministration()
         {
             this.customers = data.UploadCustomer();
             this.books = data.UploadBooks();
+            this.LoanedBooks = data.GetBorrowList();
         }
 
         // Methods:
@@ -74,13 +73,12 @@ namespace PLS
 
         public void lendBook(int bookId, int customerId)
         {
-            if (LoanedBooks.ContainsKey(bookId))
+            LoanedBooks.Add(bookId, customerId);
+            var jsonSerializer = new JsonSerializer();
+            using (var writer = new StreamWriter(Data.TransactionFile))
+            using (var jsonwriter = new JsonTextWriter(writer))
             {
-                Console.WriteLine("This book is being borrowed by someone else at the moment, try again later...");
-            }
-            else
-            {
-                LoanedBooks.Add(bookId, customerId);
+                jsonSerializer.Serialize(jsonwriter, LoanedBooks);
             }
         }
 
@@ -102,6 +100,10 @@ namespace PLS
         {
             var result = Shelf.GetAllBooks();
             foreach (var x in result) { Console.WriteLine(x.GetBooks()); }
+        }
+        public List<BookItem> GetAllBook()
+        {
+            return books;
         }
 
         public void addBook()
@@ -141,11 +143,17 @@ namespace PLS
 
         public List<Customer> GetAllCustomer()
         {
-            foreach ( var x in customers)
-            {
-                Console.WriteLine(x.GetCustomer());
-            }
             return customers;
+        }
+        public Customer GetCustomerData(int i)
+        {
+            int total_records = customers.Count;
+            Customer cstmr = null ;
+            if (i <= total_records && i > 0)
+            {
+                cstmr = customers[i - 1];
+            }
+            return cstmr;
         }
 
         public void GetCustomer(int i)
@@ -186,8 +194,14 @@ namespace PLS
             Console.WriteLine("Phone number: ");
             string telephoneNum = Console.ReadLine().Replace("\"","");
 
-            int number = data.UploadCustomer().Count + 1;
-            AddCustomer(new Customer(number, gender, nationality, lastName, surName, street, postcode, city, email, username, telephoneNum));
+            try
+            {
+                int number = data.UploadCustomer().Count + 1;
+                AddCustomer(new Customer(number, gender, nationality, lastName, surName, street, postcode, city, email, username, telephoneNum));
+                Console.WriteLine("New Customer has been succesfully added");
+            }
+            catch { Console.WriteLine("Failed to add new Customer."); }
+            
         }
 
         public void AddCustomer(Customer customer)
@@ -220,8 +234,31 @@ namespace PLS
             {
                 jsonSerializer.Serialize(jsonwriter, books);
             }
-            Console.WriteLine("Backup successfully executed...");
 
+            //Loan Transaction file
+            using (var writer = new StreamWriter(Data.backup_TransactionFile))
+            using (var jsonwriter = new JsonTextWriter(writer))
+            {
+                jsonSerializer.Serialize(jsonwriter, LoanedBooks);
+            }
+
+            Console.WriteLine("Backup successfully executed...");
+        }
+
+        public void restore()
+        {
+            Console.WriteLine("Executing Restore... \nPlease wait...");
+            //Customer file
+            customers = data.restore_UploadCustomer();
+
+            //Book file
+            books = data.restore_UploadBooks();
+
+            //Loan Transaction file
+            LoanedBooks = data.restore_GetBorrowList();
+
+
+            Console.WriteLine("Restore successfully executed...");
         }
     }
 }

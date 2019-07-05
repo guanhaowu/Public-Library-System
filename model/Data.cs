@@ -17,14 +17,12 @@ namespace PLS
         public static readonly string NewBookFile = projectDirectory + "\\Data\\savedbooks.json";
         public static readonly string InitialPersonFile = projectDirectory + "\\Data\\persons.csv";
         public static readonly string NewPersonFile = projectDirectory + "\\Data\\persons.json";
+        public static readonly string TransactionFile = projectDirectory + "\\Data\\borrowList.json";
 
         //backup locations
         public static readonly string backup_NewBookFile = projectDirectory + "\\Data\\backup\\savedbooks.json";
         public static readonly string backup_NewPersonFile = projectDirectory + "\\Data\\backup\\persons.json";
-
-        [JsonProperty]
-        public List<Customer> CustomerList = new List<Customer>();
-
+        public static readonly string backup_TransactionFile = projectDirectory + "\\Data\\backup\\borrowList.json";
 
         public List<Settings> GetSettings()
         {
@@ -57,6 +55,36 @@ namespace PLS
             File.WriteAllText(SettingsFile, json);
         }
 
+        public Dictionary<int,int> GetBorrowList()
+        {
+            Dictionary<int, int> LoanedBooks = new Dictionary<int, int>();
+            try
+            {
+                using (StreamReader reader = new StreamReader(TransactionFile))
+                {
+                    var json = reader.ReadToEnd();
+                    LoanedBooks = JsonConvert.DeserializeObject<Dictionary<int,int>>(json);
+                }
+            }
+            catch { Console.WriteLine("Failed to load books file..."); }
+            return LoanedBooks;
+        }
+
+        public Dictionary<int, int> restore_GetBorrowList()
+        {
+            Dictionary<int, int> LoanedBooks = new Dictionary<int, int>();
+            try
+            {
+                using (StreamReader reader = new StreamReader(backup_TransactionFile))
+                {
+                    var json = reader.ReadToEnd();
+                    LoanedBooks = JsonConvert.DeserializeObject<Dictionary<int, int>>(json);
+                }
+            }
+            catch { Console.WriteLine("Failed to load books file..."); }
+            return LoanedBooks;
+        }
+
         public List<BookItem> UploadBooks()
         {
             var books = new List<BookItem>();
@@ -76,8 +104,24 @@ namespace PLS
             return books;
         }
 
+        public List<BookItem> restore_UploadBooks()
+        {
+            var books = new List<BookItem>();
+            try
+            {
+                using (StreamReader reader = new StreamReader(backup_NewBookFile))
+                {
+                    var json = reader.ReadToEnd();
+                    books = JsonConvert.DeserializeObject<List<BookItem>>(json);
+                }
+            }
+            catch { Console.WriteLine("Failed to load books file..."); }
+            return books;
+        }
+
         public List<Customer> UploadCustomer()
         {
+            var CustomerList = new List<Customer>();
             if (GetSettings()[0].FirstRun_PersonList)
             {
                 try
@@ -114,6 +158,22 @@ namespace PLS
                 }
                 catch { Console.WriteLine("Failed to read Persons Json file."); }
             }
+            return CustomerList;
+        }
+
+        public List<Customer> restore_UploadCustomer()
+        {
+            var CustomerList = new List<Customer>();
+            try
+            {
+                var fileContents = new List<string[]>();
+                using (StreamReader reader = new StreamReader(backup_NewPersonFile))
+                {
+                    var lines = reader.ReadToEnd();
+                    CustomerList = JsonConvert.DeserializeObject<List<Customer>>(lines);
+                }
+            }
+            catch { Console.WriteLine("Failed to read Persons Json file."); }
             return CustomerList;
         }
     }

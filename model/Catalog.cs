@@ -24,7 +24,7 @@ namespace PLS
             searchResult.Clear();
             foreach (var book in Bookitem)
             {
-                if (book.Title == title)
+                if (book.Title.Contains(title))
                 {
                     searchResult.Add(book);
                 }
@@ -37,7 +37,7 @@ namespace PLS
             searchResult.Clear();
             foreach (var book in Bookitem)
             {
-                if (book.Author == author)
+                if (book.Author.Contains(author))
                 {
                     searchResult.Add(book);
                 }
@@ -50,7 +50,7 @@ namespace PLS
             searchResult.Clear();
             foreach (var book in Bookitem)
             {
-                if (book.Author == author && book.Title == title)
+                if (book.Author.Contains(author) && book.Title.Contains(title))
                 {
                    searchResult.Add(book);
                 }
