@@ -19,8 +19,8 @@ namespace PLS
         public static readonly string NewPersonFile = projectDirectory + "\\Data\\persons.json";
 
         //backup locations
-        public static readonly string backup_NewBookFile = projectDirectory + "\\Data\\Backup\\savedbooks.json";
-        public static readonly string backup_NewPersonFile = projectDirectory + "\\Data\\Backup\\persons.json";
+        public static readonly string backup_NewBookFile = projectDirectory + "\\Data\\backup\\savedbooks.json";
+        public static readonly string backup_NewPersonFile = projectDirectory + "\\Data\\backup\\persons.json";
 
         [JsonProperty]
         public List<Customer> CustomerList = new List<Customer>();
